@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | Aether Jewels</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="loginScreen" class="admin-login">
+    <div class="login-box">
+      <h1 data-i18n="admin_login">Admin Access</h1>
+      <p>Enter password to manage the collection</p>
+      <div class="form-group" style="margin-bottom:24px;">
+        <input type="password" id="adminPass" placeholder="Password" style="width:100%;padding:14px;background:var(--bg-primary);border:1px solid var(--border);color:var(--text-primary);font-size:15px;">
+      </div>
+      <button class="btn btn-filled" style="width:100%;" onclick="doLogin()" data-i18n="admin_enter">Enter</button>
+      <p id="loginError" style="color:#c44;margin-top:16px;display:none;font-size:13px;">Incorrect password</p>
+      <p style="margin-top:30px;font-size:12px;color:var(--text-secondary);">Default password: <code>kaxuer99589K.</code></p>
+    </div>
+  </div>
+
+  <div id="adminScreen" style="display:none;">
+    <header class="header">
+      <div class="container">
+        <nav class="nav">
+          <a href="index.html" class="logo">AETHER <span>JEWELS</span></a>
+          <div class="nav-right">
+            <div class="lang-switch">
+              <button data-lang="en" class="active">EN</button>
+              <button data-lang="zh">中文</button>
+            </div>
+            <button class="btn" style="padding:8px 20px;font-size:11px;" onclick="adminLogout()" data-i18n="admin_logout">Logout</button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <section class="admin-panel">
+      <div class="container">
+        <div class="admin-header">
+          <h1 class="section-title" data-i18n="admin_title">Manage Collection</h1>
+          <a href="index.html" class="btn">← Back to Site</a>
+        </div>
+
+        <!-- Add Form -->
+        <div class="admin-form">
+          <h2 data-i18n="admin_add">Add New Piece</h2>
+          <form id="addProductForm" onsubmit="handleAddProduct(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label data-i18n="admin_name_en">Name (English)</label>
+                <input type="text" name="name_en" required style="width:100%;padding:12px;background:var(--bg-primary);border:1px solid var(--border);color:var(--text-primary);">
+              </div>
+              <div class="form-group">
+                <label data-i18n="admin_name_zh">Name (Chinese)</label>
+                <input type="text" name="name_zh" required style="width:100%;padding:12px;background:var(--bg-primary);border:1px solid var(--border);color:var(--text-primary);">
+              </div>
+            </div>
+            <div class="form-row" style="margin-top:20px;">
+              <div class="form-group">
+                <label data-i18n="admin_cat">Category</label>
+                <select name="category" style="width:100%;padding:12px;background:var(--bg-primary);border:1px solid var(--border);color:var(--text-primary);">
+                  <option value="rings">Rings / 戒指</option>
+                  <option value="necklaces">Necklaces / 项链</option>
+                  <option value="earrings">Earrings / 耳饰</option>
+                  <option value="bracelets">Bracelets / 手镯</option>
+                  <option value="other">Other / 其他</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label data-i18n="admin_price">Price (USD)</label>
+                <input type="number" name="price" required min="0" step="100" style="width:100%;padding:12px;background:var(--bg-primary);border:1px solid var(--border);color:var(--text-primary);">
+              </div>
+            </div>
+            <div class="form-row" style="margin-top:20px;">
+              <div class="form-group">
+                <label data-i18n="admin_material">Material</label>
+                <input type="text" name="material" placeholder="e.g. 18k Gold, Diamond" style="width:100%;padding:12px;background:var(--bg-primary);border:1px solid var(--border);color:var(--text-primary);">
+              </div>
+              <div class="form-group">
+                <label data-i18n="admin_origin">Origin</label>
+                <input type="text" name="origin" placeholder="e.g. France" style="width:100%;padding:12px;background:var(--bg-primary);border:1px solid var(--border);color:var(--text-primary);">
+              </div>
+            </div>
+            <div class="form-row" style="margin-top:20px;">
+              <div class="form-group">
+                <label data-i18n="admin_year">Period / Year</label>
+                <input type="text" name="year" placeholder="e.g. 1960s" style="width:100%;padding:12px;background:var(--bg-primary);border:1px solid var(--border);color:var(--text-primary);">
+              </div>
+              <div class="form-group">
+                <label data-i18n="admin_condition">Condition</label>
+                <input type="text" name="condition" placeholder="e.g. Excellent" style="width:100%;padding:12px;background:var(--bg-primary);border:1px solid var(--border);color:var(--text-primary);">
+              </div>
+            </div>
+            <div class="form-group" style="margin-top:20px;">
+              <label data-i18n="admin_desc_en">Description (English)</label>
+              <textarea name="desc_en" rows="3" style="width:100%;padding:12px;background:var(--bg-primary);border:1px solid var(--border);color:var(--text-primary);"></textarea>
+            </div>
+            <div class="form-group" style="margin-top:20px;">
+              <label data-i18n="admin_desc_zh">Description (Chinese)</label>
+              <textarea name="desc_zh" rows="3" style="width:100%;padding:12px;background:var(--bg-primary);border:1px solid var(--border);color:var(--text-primary);"></textarea>
+            </div>
+            <div class="form-group" style="margin-top:20px;">
+              <label data-i18n="admin_image">Product Image</label>
+              <input type="file" accept="image/*" id="productImage" onchange="handleImageUpload(this, 'imgPreview')" style="color:var(--text-secondary);margin-top:8px;">
+              <div class="image-preview" id="imgPreview">
+                <span style="color:var(--text-secondary);font-size:12px;">Preview</span>
+              </div>
+            </div>
+            <div class="form-group" style="margin-top:20px;">
+              <label style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+                <input type="checkbox" name="featured" style="width:auto;">
+                <span>Featured on homepage / 首页精选</span>
+              </label>
+            </div>
+            <button type="submit" class="btn btn-filled" style="margin-top:30px;" data-i18n="admin_save">Save Piece</button>
+          </form>
+        </div>
+
+        <!-- List -->
+        <h2 style="font-size:28px;margin-bottom:24px;" data-i18n="admin_list">Current Collection</h2>
+        <div class="admin-products">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script>
+    // Check auth on load
+    if (checkAdminAuth()) {
+      showAdmin();
+    }
+
+    function doLogin() {
+      const pass = document.getElementById('adminPass').value;
+      if (adminLogin(pass)) {
+        showAdmin();
+      } else {
+        document.getElementById('loginError').style.display = 'block';
+      }
+    }
+
+    function showAdmin() {
+      document.getElementById('loginScreen').style.display = 'none';
+      document.getElementById('adminScreen').style.display = 'block';
+      renderAdminList();
+      updateAllTexts();
+    }
+
+    function handleAddProduct(e) {
+      e.preventDefault();
+      const form = e.target;
+      const preview = document.getElementById('imgPreview');
+      const data = {
+        name_en: form.name_en.value,
+        name_zh: form.name_zh.value,
+        category: form.category.value,
+        price: form.price.value,
+        material: form.material.value,
+        origin: form.origin.value,
+        year: form.year.value,
+        condition: form.condition.value,
+        desc_en: form.desc_en.value,
+        desc_zh: form.desc_zh.value,
+        image: preview.dataset.src || '',
+        featured: form.featured.checked
+      };
+      saveNewProduct(data);
+      form.reset();
+      preview.innerHTML = '<span style="color:var(--text-secondary);font-size:12px;">Preview</span>';
+      delete preview.dataset.src;
+      renderAdminList();
+      alert('Piece added successfully!');
+    }
+
+    // Enter key on password
+    document.getElementById('adminPass')?.addEventListener('keydown', e => {
+      if (e.key === 'Enter') doLogin();
+    });
+  </script>
+</body>
+</html>
