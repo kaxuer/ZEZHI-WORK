@@ -50,6 +50,9 @@ const translations = {
     contact_email_label: "Email",
     contact_location_label: "Location",
     contact_hours_label: "By Appointment",
+    contact_pay_label: "Payment",
+    contact_pay_text: "USDT accepted<br>Details provided after inquiry",
+    pay_note: "<strong>USDT accepted.</strong> After your inquiry we will confirm the order and send the wallet address and network details privately by email.",
     // Footer
     footer_tagline: "Curating exceptional jewelry collectibles for connoisseurs worldwide.",
     footer_explore: "Explore",
@@ -129,6 +132,9 @@ const translations = {
     contact_email_label: "邮箱",
     contact_location_label: "位置",
     contact_hours_label: "需预约",
+    contact_pay_label: "付款方式",
+    contact_pay_text: "支持 USDT 付款<br>咨询后提供收款详情",
+    pay_note: "<strong>支持 USDT 付款。</strong>您咨询后，我们会确认订单，并通过邮件私下发送收款地址与网络信息。",
     footer_tagline: "为全球鉴赏家甄选非凡珠宝收藏品。",
     footer_explore: "探索",
     footer_info: "信息",
@@ -470,6 +476,7 @@ function renderProductDetail() {
           <button class="btn btn-filled" onclick="addToCart('${p.id}')">${t('add_to_inquiry')}</button>
           <a href="contact.html" class="btn">${t('nav_contact')}</a>
         </div>
+        <p class="pay-note" data-i18n="pay_note">${t('pay_note')}</p>
       </div>
     </div>
   `;

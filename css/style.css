@@ -1019,3 +1019,13 @@ img {
   margin-bottom: 12px;
   color: var(--text-primary);
 }
+/* Payment note */
+.pay-note {
+  margin-top: 24px;
+  padding: 14px 18px;
+  border-left: 2px solid var(--gold);
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.pay-note strong { color: var(--gold); font-weight: 500; }
