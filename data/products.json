@@ -1,0 +1,23 @@
+[
+ {
+  "id": "ring-001",
+  "name_en": "Top-grade conch pearl",
+  "name_zh": "顶级孔克珠",
+  "category": "rings",
+  "price": 19800,
+  "desc_en": "...",
+  "desc_zh": "...",
+  "material": "",
+  "origin": "",
+  "year": "",
+  "condition": "",
+  "featured": false,
+  "image": "",
+  "images": [],
+  "videos": [
+   {
+    "src": "collection/ring-001/Screen_Recording_20261101_183900_WeChat.mp4"
+   }
+  ]
+ }
+]
