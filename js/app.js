@@ -423,7 +423,7 @@ function renderProducts(filter = 'all') {
     return `
       <div class="product-card" onclick="location.href='product.html?id=${p.id}'">
         <div class="product-image">
-          <img src="${p.image}" alt="${name}" loading="lazy">
+          ${cardMedia(p, name)}
           ${p.featured ? `<span class="product-badge">${currentLang === 'zh' ? '精选' : 'Featured'}</span>` : ''}
           ${(p.videos && p.videos.length) ? '<span class="play-badge">▶</span>' : ''}
         </div>
@@ -458,20 +458,22 @@ function renderProductDetail() {
   if (!container) return;
 
   // Media: photos + videos (videos may be "file.mp4" or {src, poster})
-  const images = (p.images && p.images.length) ? p.images : [p.image];
+  const images = ((p.images && p.images.length) ? p.images : [p.image]).filter(Boolean);
   const videos = (p.videos || []).map(v => typeof v === 'string' ? { src: v } : v);
   window.__media = { images, videos, name };
   const thumbsHTML = (images.length + videos.length > 1) ? `<div class="thumbnails">
-    ${images.map((src, i) => `<div class="thumb ${i === 0 ? 'active' : ''}" onclick="showMedia('image',${i},this)"><img src="${src}" alt="" loading="lazy"></div>`).join('')}
-    ${videos.map((v, i) => `<div class="thumb thumb-video" onclick="showMedia('video',${i},this)"><img src="${v.poster || images[0]}" alt=""><span>▶</span></div>`).join('')}
+    ${images.map((src, i) => `<div class="thumb ${i === 0 && images.length ? 'active' : ''}" onclick="showMedia('image',${i},this)"><img src="${src}" alt="" loading="lazy"></div>`).join('')}
+    ${videos.map((v, i) => `<div class="thumb thumb-video" onclick="showMedia('video',${i},this)">${(v.poster || images[0]) ? `<img src="${v.poster || images[0]}" alt="">` : `<video src="${v.src}#t=0.1" muted playsinline preload="metadata"></video>`}<span>▶</span></div>`).join('')}
   </div>` : '';
+
+  const mainHTML = images.length
+    ? `<img src="${images[0]}" alt="${name}" id="mainProductImg">`
+    : (videos.length ? `<video class="product-video" controls playsinline preload="metadata" ${videos[0].poster ? `poster="${videos[0].poster}"` : ''} src="${videos[0].src}#t=0.1"></video>` : '');
 
   container.innerHTML = `
     <div class="product-detail-grid">
       <div class="product-gallery">
-        <div class="main-image" id="mainMedia">
-          <img src="${p.image}" alt="${name}" id="mainProductImg">
-        </div>
+        <div class="main-image" id="mainMedia">${mainHTML}</div>
         ${thumbsHTML}
       </div>
       <div class="product-detail-info">
@@ -493,6 +495,13 @@ function renderProductDetail() {
       </div>
     </div>
   `;
+}
+
+const vsrc = v => (typeof v === 'string' ? v : v.src);
+function cardMedia(p, name) {
+  if (p.image) return `<img src="${p.image}" alt="${name}" loading="lazy">`;
+  if (p.videos && p.videos.length) return `<video src="${vsrc(p.videos[0])}#t=0.1" muted playsinline preload="metadata"></video>`;
+  return '';
 }
 
 function showMedia(type, i, el) {
