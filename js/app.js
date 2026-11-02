@@ -301,7 +301,9 @@ const defaultProducts = [
   }
 ];
 
+let siteProducts = null; // loaded from data/products.json
 function getProducts() {
+  if (siteProducts && siteProducts.length) return siteProducts;
   const stored = localStorage.getItem('aether_products');
   if (stored) {
     try {
@@ -423,6 +425,7 @@ function renderProducts(filter = 'all') {
         <div class="product-image">
           <img src="${p.image}" alt="${name}" loading="lazy">
           ${p.featured ? `<span class="product-badge">${currentLang === 'zh' ? '精选' : 'Featured'}</span>` : ''}
+          ${(p.videos && p.videos.length) ? '<span class="play-badge">▶</span>' : ''}
         </div>
         <div class="product-info">
           <div class="product-category">${t('filter_' + p.category) || p.category}</div>
@@ -453,13 +456,23 @@ function renderProductDetail() {
   
   const container = document.querySelector('.product-detail-content');
   if (!container) return;
-  
+
+  // Media: photos + videos (videos may be "file.mp4" or {src, poster})
+  const images = (p.images && p.images.length) ? p.images : [p.image];
+  const videos = (p.videos || []).map(v => typeof v === 'string' ? { src: v } : v);
+  window.__media = { images, videos, name };
+  const thumbsHTML = (images.length + videos.length > 1) ? `<div class="thumbnails">
+    ${images.map((src, i) => `<div class="thumb ${i === 0 ? 'active' : ''}" onclick="showMedia('image',${i},this)"><img src="${src}" alt="" loading="lazy"></div>`).join('')}
+    ${videos.map((v, i) => `<div class="thumb thumb-video" onclick="showMedia('video',${i},this)"><img src="${v.poster || images[0]}" alt=""><span>▶</span></div>`).join('')}
+  </div>` : '';
+
   container.innerHTML = `
     <div class="product-detail-grid">
       <div class="product-gallery">
-        <div class="main-image">
+        <div class="main-image" id="mainMedia">
           <img src="${p.image}" alt="${name}" id="mainProductImg">
         </div>
+        ${thumbsHTML}
       </div>
       <div class="product-detail-info">
         <div class="product-category">${t('filter_' + p.category) || p.category}</div>
@@ -480,6 +493,19 @@ function renderProductDetail() {
       </div>
     </div>
   `;
+}
+
+function showMedia(type, i, el) {
+  const m = window.__media; if (!m) return;
+  const box = document.getElementById('mainMedia');
+  if (type === 'video') {
+    const v = m.videos[i];
+    box.innerHTML = `<video class="product-video" controls playsinline autoplay preload="metadata" ${v.poster ? `poster="${v.poster}"` : ''} src="${v.src}"></video>`;
+  } else {
+    box.innerHTML = `<img src="${m.images[i]}" alt="${m.name}" id="mainProductImg">`;
+  }
+  document.querySelectorAll('.thumbnails .thumb').forEach(t => t.classList.remove('active'));
+  el?.classList.add('active');
 }
 
 // ==================== Admin ====================
@@ -567,7 +593,11 @@ function saveNewProduct(formData) {
 }
 
 // ==================== Init ====================
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const r = await fetch('data/products.json', { cache: 'no-cache' });
+    if (r.ok) siteProducts = await r.json();
+  } catch (e) { /* fall back to built-in data */ }
   // Language
   updateAllTexts();
   
