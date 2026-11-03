@@ -35,8 +35,14 @@
   "year": "",
   "condition": "",
   "featured": false,
-  "image": "",
-  "images": [],
-  "videos": []
+  "image": "collection/ring-002/2.png",
+  "images": [
+   "collection/ring-002/2.png"
+  ],
+  "videos": [
+   {
+    "src": "collection/ring-002/14.mp4"
+   }
+  ]
  }
 ]
