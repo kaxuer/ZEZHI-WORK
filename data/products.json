@@ -21,5 +21,22 @@
     "src": "collection/ring-001/Screen_Recording_20261101_183900_WeChat.mp4"
    }
   ]
+ },
+ {
+  "id": "ring-002",
+  "name_en": "Nigerian emerald",
+  "name_zh": "尼日利亚祖母绿",
+  "category": "rings",
+  "price": 29800,
+  "desc_en": "...",
+  "desc_zh": "...",
+  "material": "",
+  "origin": "",
+  "year": "",
+  "condition": "",
+  "featured": false,
+  "image": "",
+  "images": [],
+  "videos": []
  }
 ]
