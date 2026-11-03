@@ -52,17 +52,17 @@
  },
  {
   "id": "necklace-002",
-  "name_en": "necklace-002",
-  "name_zh": "necklace-002",
-  "category": "other",
-  "price": 0,
-  "desc_en": "",
-  "desc_zh": "",
+  "name_en": "Nigerian emerald",
+  "name_zh": "尼日利亚祖母绿",
+  "category": "rings",
+  "price": 298000,
+  "desc_en": "...",
+  "desc_zh": "...",
   "material": "",
   "origin": "",
   "year": "",
   "condition": "",
-  "featured": false,
+  "featured": true,
   "image": "collection/necklace-002/2.png",
   "images": [
    "collection/necklace-002/2.png"
@@ -95,22 +95,5 @@
     "src": "collection/ring-001/Screen_Recording_20261101_183900_WeChat.mp4"
    }
   ]
- },
- {
-  "id": "ring-002",
-  "name_en": "Nigerian emerald",
-  "name_zh": "尼日利亚祖母绿",
-  "category": "rings",
-  "price": 298000,
-  "desc_en": "...",
-  "desc_zh": "...",
-  "material": "",
-  "origin": "",
-  "year": "",
-  "condition": "",
-  "featured": true,
-  "image": "",
-  "images": [],
-  "videos": []
  }
 ]
