@@ -51,6 +51,25 @@
   "videos": []
  },
  {
+  "id": "necklace-002",
+  "name_en": "necklace-002",
+  "name_zh": "necklace-002",
+  "category": "other",
+  "price": 0,
+  "desc_en": "",
+  "desc_zh": "",
+  "material": "",
+  "origin": "",
+  "year": "",
+  "condition": "",
+  "featured": false,
+  "image": "collection/necklace-002/2.png",
+  "images": [
+   "collection/necklace-002/2.png"
+  ],
+  "videos": []
+ },
+ {
   "id": "ring-001",
   "name_en": "Top-grade conch pearl",
   "name_zh": "顶级孔克珠",
@@ -86,10 +105,8 @@
   "year": "",
   "condition": "",
   "featured": true,
-  "image": "collection/ring-002/2.png",
-  "images": [
-   "collection/ring-002/2.png"
-  ],
+  "image": "",
+  "images": [],
   "videos": [
    {
     "src": "collection/ring-002/20250824_153843_1_1.mp4"
