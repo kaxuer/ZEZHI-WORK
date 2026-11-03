@@ -39,6 +39,10 @@
   "images": [
    "collection/ring-002/2.png"
   ],
-  "videos": []
+  "videos": [
+   {
+    "src": "collection/ring-002/20250824_153843_1_1.mp4"
+   }
+  ]
  }
 ]
