@@ -34,8 +34,7 @@
   "origin": "",
   "year": "",
   "condition": "",
-  "featured": false,
-  "true": false,
+  "featured": true,
   "image": "collection/ring-002/2.png",
   "images": [
    "collection/ring-002/2.png"
