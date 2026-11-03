@@ -17,6 +17,23 @@
   "videos": []
  },
  {
+  "id": "earring-001",
+  "name_en": "Gold Bracelet",
+  "name_zh": "黄金手镯",
+  "category": "bracelets",
+  "price": 12800,
+  "desc_en": "...",
+  "desc_zh": "...",
+  "material": "18k Gold",
+  "origin": "France",
+  "year": "1950",
+  "condition": "Excellent",
+  "featured": false,
+  "image": "",
+  "images": [],
+  "videos": []
+ },
+ {
   "id": "necklace-001",
   "name_en": "Colombian emerald necklace（Verdant Green）",
   "name_zh": "哥伦比亚祖母绿项链（沃顿绿）",
