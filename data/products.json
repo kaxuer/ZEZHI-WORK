@@ -1,5 +1,22 @@
 [
  {
+  "id": "bracelet-001",
+  "name_en": "bracelet-001",
+  "name_zh": "bracelet-001",
+  "category": "other",
+  "price": 0,
+  "desc_en": "",
+  "desc_zh": "",
+  "material": "",
+  "origin": "",
+  "year": "",
+  "condition": "",
+  "featured": false,
+  "image": "",
+  "images": [],
+  "videos": []
+ },
+ {
   "id": "ring-001",
   "name_en": "Top-grade conch pearl",
   "name_zh": "顶级孔克珠",
