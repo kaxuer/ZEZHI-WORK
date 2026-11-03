@@ -46,8 +46,10 @@
   "year": "",
   "condition": "",
   "featured": true,
-  "image": "",
-  "images": [],
+  "image": "collection/necklace-001/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261102162852_45_2.jpg",
+  "images": [
+   "collection/necklace-001/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261102162852_45_2.jpg"
+  ],
   "videos": [
    {
     "src": "collection/necklace-001/Screen_Recording_20261101_183900_WeChat.mp4"
@@ -90,10 +92,8 @@
   "year": "",
   "condition": "",
   "featured": true,
-  "image": "collection/ring-001/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261102162852_45_2.jpg",
-  "images": [
-   "collection/ring-001/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261102162852_45_2.jpg"
-  ],
+  "image": "",
+  "images": [],
   "videos": []
  }
 ]
