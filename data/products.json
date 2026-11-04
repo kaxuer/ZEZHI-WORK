@@ -83,6 +83,10 @@
   "images": [
    "collection/necklace-002/2.png"
   ],
-  "videos": []
+  "videos": [
+   {
+    "src": "collection/necklace-002/20250824_153843_1_1.mp4"
+   }
+  ]
  }
 ]
