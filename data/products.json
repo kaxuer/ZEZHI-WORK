@@ -60,7 +60,11 @@
   "images": [
    "collection/necklace-001/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261102162852_45_2.jpg"
   ],
-  "videos": []
+  "videos": [
+   {
+    "src": "collection/necklace-001/Screen_Recording_20261101_183900_WeChat.mp4"
+   }
+  ]
  },
  {
   "id": "necklace-002",
