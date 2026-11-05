@@ -125,8 +125,14 @@
   "year": "",
   "condition": "",
   "featured": true,
-  "image": "",
-  "images": [],
+  "image": "collection/ring-001/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261105134002_75_2.jpg",
+  "images": [
+   "collection/ring-001/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261105134002_75_2.jpg",
+   "collection/ring-001/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261105134003_76_2.jpg",
+   "collection/ring-001/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261105134005_77_2.jpg",
+   "collection/ring-001/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261105134006_78_2.jpg",
+   "collection/ring-001/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261105134007_79_2.jpg"
+  ],
   "videos": []
  }
 ]
