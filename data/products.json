@@ -125,8 +125,14 @@
   "year": "",
   "condition": "",
   "featured": true,
-  "image": "",
-  "images": [],
-  "videos": []
+  "image": "collection/ring-001/2.jpg",
+  "images": [
+   "collection/ring-001/2.jpg"
+  ],
+  "videos": [
+   {
+    "src": "collection/ring-001/%E7%BA%A2%E5%AE%9D%E7%9F%B32.mp4"
+   }
+  ]
  }
 ]
