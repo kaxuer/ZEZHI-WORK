@@ -111,5 +111,22 @@
     "src": "collection/necklace-003/%E7%A5%96%E6%AF%8D%E7%BB%BF%E9%A1%B9%E9%93%BE.mp4"
    }
   ]
+ },
+ {
+  "id": "ring-001",
+  "name_en": "Bvlgari ring",
+  "name_zh": "宝格丽戒指",
+  "category": "rings",
+  "price": 2200,
+  "desc_en": "AU18K",
+  "desc_zh": "AU18K",
+  "material": "",
+  "origin": "",
+  "year": "",
+  "condition": "",
+  "featured": true,
+  "image": "",
+  "images": [],
+  "videos": []
  }
 ]
