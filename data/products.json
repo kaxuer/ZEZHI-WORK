@@ -88,5 +88,28 @@
     "src": "collection/necklace-002/20250824_153843_1_1.mp4"
    }
   ]
+ },
+ {
+  "id": "necklace-003",
+  "name_en": "Muzo Green emerald",
+  "name_zh": "哥伦比亚祖母绿项链",
+  "category": "necklaces",
+  "price": 68000,
+  "desc_en": "...",
+  "desc_zh": "...",
+  "material": "",
+  "origin": "",
+  "year": "",
+  "condition": "",
+  "featured": true,
+  "image": "collection/necklace-003/%E7%A5%96%E6%AF%8D%E7%BB%BF%E9%A1%B9%E9%93%BE.jpg",
+  "images": [
+   "collection/necklace-003/%E7%A5%96%E6%AF%8D%E7%BB%BF%E9%A1%B9%E9%93%BE.jpg"
+  ],
+  "videos": [
+   {
+    "src": "collection/necklace-003/%E7%A5%96%E6%AF%8D%E7%BB%BF%E9%A1%B9%E9%93%BE.mp4"
+   }
+  ]
  }
 ]
