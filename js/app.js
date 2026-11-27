@@ -43,6 +43,7 @@ const translations = {
     // Product
     add_to_inquiry: "Inquire About This Piece",
     view_details: "View Details",
+    price_on_request: "Price upon request",
     material: "Material",
     origin: "Origin",
     year: "Period",
@@ -66,7 +67,13 @@ const translations = {
     footer_explore: "Explore",
     footer_info: "Information",
     footer_legal: "Legal",
-    footer_rights: "© 2025 Aether Jewels. All rights reserved.",
+    footer_appointments: "Private Appointments",
+    footer_shipping: "Worldwide Shipping",
+    footer_authentication: "Authentication",
+    footer_privacy: "Privacy Policy",
+    footer_terms: "Terms of Service",
+    footer_languages: "EN / 中文",
+    footer_rights: `© ${new Date().getFullYear()} Aether Jewels. All rights reserved.`,
     // Cart
     cart_title: "Inquiry List",
     cart_empty: "Your inquiry list is empty.",
@@ -134,6 +141,7 @@ const translations = {
     filter_other: "其他",
     add_to_inquiry: "咨询此作品",
     view_details: "查看详情",
+    price_on_request: "价格面议",
     material: "材质",
     origin: "产地",
     year: "年代",
@@ -155,7 +163,13 @@ const translations = {
     footer_explore: "探索",
     footer_info: "信息",
     footer_legal: "法律",
-    footer_rights: "© 2025 Aether Jewels. 版权所有。",
+    footer_appointments: "私人预约",
+    footer_shipping: "全球配送",
+    footer_authentication: "藏品鉴定",
+    footer_privacy: "隐私政策",
+    footer_terms: "服务条款",
+    footer_languages: "英文 / 中文",
+    footer_rights: `© ${new Date().getFullYear()} Aether Jewels. 版权所有。`,
     cart_title: "咨询清单",
     cart_empty: "咨询清单为空。",
     cart_total: "件数",
@@ -191,6 +205,20 @@ let currentLang = localStorage.getItem('aether_lang') || 'en';
 
 function t(key) {
   return translations[currentLang][key] || key;
+}
+
+function formatPrice(price) {
+  if (typeof price === 'number' && Number.isFinite(price)) {
+    return `$${price.toLocaleString()}`;
+  }
+  if (typeof price === 'string' && price.trim()) {
+    const value = price.trim();
+    if (/^(negotiated price|price upon request)$/i.test(value)) {
+      return t('price_on_request');
+    }
+    return value;
+  }
+  return t('price_on_request');
 }
 
 function setLanguage(lang) {
@@ -403,7 +431,7 @@ function renderCartItems() {
         <img src="${p.image}" alt="${name}">
         <div class="cart-item-info">
           <h4>${name}</h4>
-          <div class="price">$${p.price.toLocaleString()}</div>
+          <div class="price">${formatPrice(p.price)}</div>
         </div>
         <button class="btn btn-danger" style="padding:6px 12px;font-size:10px;" onclick="removeFromCart('${p.id}')">×</button>
       </div>
@@ -446,7 +474,7 @@ function renderProducts(filter = 'all') {
         <div class="product-info">
           <div class="product-category">${t('filter_' + p.category) || p.category}</div>
           <h3 class="product-name">${name}</h3>
-          <div class="product-price">$${p.price.toLocaleString()}</div>
+          <div class="product-price">${formatPrice(p.price)}</div>
         </div>
       </div>
     `;
@@ -495,7 +523,7 @@ function renderProductDetail() {
       <div class="product-detail-info">
         <div class="product-category">${t('filter_' + p.category) || p.category}</div>
         <h1 class="product-name">${name}</h1>
-        <div class="product-price">$${p.price.toLocaleString()}</div>
+        <div class="product-price">${formatPrice(p.price)}</div>
         <div class="product-meta">
           <div class="meta-row"><span>${t('material')}</span><span>${p.material}</span></div>
           <div class="meta-row"><span>${t('origin')}</span><span>${p.origin}</span></div>
@@ -565,7 +593,7 @@ function renderAdminList() {
         <img src="${p.image}" alt="${name}">
         <div class="info">
           <h4>${name}</h4>
-          <span>$${p.price.toLocaleString()} · ${p.category} · ${p.origin}</span>
+          <span>${formatPrice(p.price)} · ${p.category} · ${p.origin}</span>
         </div>
         <button class="btn btn-danger" style="padding:8px 16px;font-size:11px;" onclick="deleteProduct('${p.id}')">${t('admin_delete')}</button>
       </div>
